@@ -1,9 +1,24 @@
+import Snowfall from "react-snowfall";
 import Routes from "./routes";
+import { useTheme } from "./components/theme/theme-provider";
 
 const App = () => {
+  const { theme } = useTheme();
+
+  console.log(theme);
+
   return (
     // helmet
-    <Routes />
+    <>
+      <Snowfall
+        color={theme === "light" ? "#c4d0ff" : "#dee4fd"}
+        snowflakeCount={700}
+        speed={[0.5, 5]}
+        wind={[1, 3]}
+        radius={[0.5, 6]}
+      />
+      <Routes />
+    </>
     // helmet
   );
 };
