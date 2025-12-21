@@ -5,10 +5,7 @@ import { useTheme } from "./components/theme/theme-provider";
 const App = () => {
   const { theme } = useTheme();
 
-  console.log(theme);
-
   return (
-    // helmet
     <>
       <Snowfall
         color={theme === "light" ? "#c4d0ff" : "#dee4fd"}
@@ -19,7 +16,6 @@ const App = () => {
       />
       <Routes />
     </>
-    // helmet
   );
 };
 

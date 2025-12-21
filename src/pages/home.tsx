@@ -13,7 +13,7 @@ const Home = () => {
             Under Construction
           </h1>
         </div>
-        <p className="leading-7 mt-3 sm:text-xl text-center">
+        <p className="leading-7 mt-3 sm:text-xl text-end sm:text-center">
           Coming Soon
           <small>
             <br />
