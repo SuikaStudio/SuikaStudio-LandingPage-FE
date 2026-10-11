@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --color-background: var(--background);
@@ -12,15 +9,57 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  color-scheme: light;
+}
+
+:root.dark,
+[data-theme="dark"] {
+  --background: #09090b;
+  --foreground: #fafafa;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Antigravity-style dot grid background: opacity strictly fades on dots only (0% outer edges to 100% center) */
+.bg-grid-ambient {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.25) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 25%, transparent 88%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 25%, transparent 88%);
+}
+
+:root.dark .bg-grid-ambient,
+[data-theme="dark"] .bg-grid-ambient {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 25%, transparent 88%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 25%, transparent 88%);
+}
+
+/* Hard terminal-style blinking cursor (genuine ON/OFF, no gradual opacity fade) */
+@keyframes cursor-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 0.85s infinite step-start;
 }
