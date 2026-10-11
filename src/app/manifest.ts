@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { siteConfig } from '@/data/siteConfig';
 
+export const dynamic = 'force-static';
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: `${siteConfig.name} — Creative Developer Studio (Web, IoT, Infra & Bots)`,
