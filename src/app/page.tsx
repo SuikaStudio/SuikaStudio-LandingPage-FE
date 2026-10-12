@@ -12,7 +12,7 @@ import { ScrollToTop } from '@/components/ui/ScrollToTop';
 
 export default function Home() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors selection:bg-rose-500 selection:text-white">
+    <div className="relative flex min-h-screen w-full flex-col overflow-x-clip bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors selection:bg-rose-500 selection:text-white">
       {/* Fixed Ambient Dot Grid Layer with 0% to 100% opacity mask */}
       <div className="pointer-events-none fixed inset-0 z-0 bg-grid-ambient" aria-hidden="true" />
       <AmbientBackgroundGlow />

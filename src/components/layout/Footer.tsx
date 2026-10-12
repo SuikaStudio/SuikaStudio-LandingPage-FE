@@ -36,17 +36,21 @@ function FullWidthWordmark({ text }: { text: string }) {
   return (
     <div
       ref={containerRef}
-      className="relative w-full overflow-visible select-none"
+      className="relative w-full overflow-x-clip select-none"
     >
-      {/* Hidden 100px reference span for exact width ratio calculation */}
-      <span
-        ref={measureRef}
+      {/* Hidden 100px reference span clipped within container bounds to prevent mobile horizontal overflow */}
+      <div
         aria-hidden="true"
-        style={{ fontSize: "100px" }}
-        className="pointer-events-none invisible absolute top-0 left-0 whitespace-nowrap font-bold tracking-tighter leading-none"
+        className="pointer-events-none invisible absolute inset-0 overflow-hidden"
       >
-        {text}
-      </span>
+        <span
+          ref={measureRef}
+          style={{ fontSize: "100px" }}
+          className="inline-block whitespace-nowrap font-bold tracking-tighter leading-none"
+        >
+          {text}
+        </span>
+      </div>
 
       {/* Visible Full-Width Monumental Display Text */}
       <div
@@ -68,7 +72,7 @@ export function Footer() {
   const subChars = "Developers".split("");
 
   return (
-    <footer className="w-full border-t border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-950 transition-colors">
+    <footer className="w-full overflow-x-clip border-t border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-950 transition-colors">
       <div className="w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 2xl:px-36 pt-16 sm:pt-24 pb-12 sm:pb-16">
         {/* Top Row: Tagline on Left, Navigation Columns on Right */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
